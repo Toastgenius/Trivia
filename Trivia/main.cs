@@ -101,19 +101,18 @@ namespace TRIVIA
 
         public void EndTrivia(CommandArgs args,bool CorrectAnswer)
         {
-            if (CorrectAnswer)
-            {
-                TSPlayer.All.SendInfoMessage(string.Format("{0} answered the trivia correctly! the answer was: {1}", args.Player.Name, T.Answer));
-                if (config.GiveSEconomyCurrency)
-                {
-                    Wolfje.Plugins.SEconomy.Economy.EconomyPlayer Server = SEconomyPlugin.GetEconomyPlayerSafe(TShockAPI.TSServerPlayer.Server.UserID);
-                    Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
-                }
-            }
-            else
+            if (!CorrectAnswer)
             {
                 TSPlayer.All.SendErrorMessage("[Trivia] Time is up!");
+                return;
             }
+            TSPlayer.All.SendInfoMessage(string.Format("{0} answered the trivia correctly! the answer was: {1}", args.Player.Name, T.Answer));
+            if (config.GiveSEconomyCurrency)
+            {
+                Wolfje.Plugins.SEconomy.Economy.EconomyPlayer Server = SEconomyPlugin.GetEconomyPlayerSafe(TShockAPI.TSServerPlayer.Server.UserID);
+                Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
+            }
+
 
             seconds = 0;
             T.Answer = ""; T.Question = "";
@@ -248,7 +247,8 @@ namespace TRIVIA
         {
             if (ReadConfig())
             {
-                EndTrivia(null, false);
+                seconds = 0;
+                T.Answer = ""; T.Question = "";
                 args.Player.SendMessage("Trivia config reloaded sucessfully.", Color.Green);
             }
             else
