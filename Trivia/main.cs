@@ -71,8 +71,9 @@ namespace TRIVIA
             {
                 SetNewQuestion();
             }
-            if (seconds == config.AnswerTime + config.QuestionInterval)
+            if (seconds >= config.AnswerTime + config.QuestionInterval)
             {
+                seconds = 0;
                 EndTrivia(null, false);
             }
         }
@@ -90,10 +91,19 @@ namespace TRIVIA
                 return;
             }
             string answer = string.Join(" ", args.Parameters).ToLower();
+            if (!T.Answer.Contains(","))
+            {
+                if (T.Answer.Equals(answer.ToLower()))
+                {
+                    EndTrivia(args, true);
+                    return;
+                }
+            }
             List<string> validanswers = new List<string>(T.Answer.Split(','));
             if (validanswers.Contains(answer.ToLower()))
             {
                 EndTrivia(args, true);
+                return;
             }
             else
             {
@@ -119,9 +129,6 @@ namespace TRIVIA
                 Wolfje.Plugins.SEconomy.Economy.EconomyPlayer Server = SEconomyPlugin.GetEconomyPlayerSafe(TShockAPI.TSServerPlayer.Server.UserID);
                 Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
             }
-
-
-            seconds = 0;
             T.Answer = ""; T.Question = "";
             WrongAnswers.Clear();
         }
@@ -130,7 +137,7 @@ namespace TRIVIA
         {
             List<trivia> AllQuestionsAndAnswers = new List<trivia>(config.QuestionsandAnswers);
             trivia newtrivia = AllQuestionsAndAnswers[rnd.Next(0, AllQuestionsAndAnswers.Count)];
-            T = new trivia(newtrivia.Question, newtrivia.Answer);
+            T = new trivia(newtrivia.Question, newtrivia.Answer.ToLower());
             TSPlayer.All.SendInfoMessage("[Trivia] Type /answer or /a <answer here>");
             TSPlayer.All.SendInfoMessage("[Trivia] " + T.Question);
         }
@@ -289,7 +296,6 @@ namespace TRIVIA
             if (ReadConfig())
             {
                 WrongAnswers.Clear();
-                seconds = 0;
                 T.Answer = ""; T.Question = "";
                 args.Player.SendMessage("Trivia config reloaded sucessfully.", Color.Green);
             }
