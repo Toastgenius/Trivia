@@ -119,15 +119,18 @@ namespace TRIVIA
                 TSPlayer.All.SendErrorMessage("[Trivia] Time is up!");
                 return;
             }
-            TSPlayer.All.SendInfoMessage(string.Format("{0} answered the trivia correctly! the answer was: {1}", args.Player.Name, T.Answer.Replace(',','/')));
-            if (config.DisplayWrongAnswers && WrongAnswers.Count>0)
+            else
             {
-                TSPlayer.All.SendErrorMessage(string.Format("Wrong answers were: {0}", string.Join(", ", WrongAnswers)));
-            }
-            if (config.GiveSEconomyCurrency)
-            {
-                Wolfje.Plugins.SEconomy.Economy.EconomyPlayer Server = SEconomyPlugin.GetEconomyPlayerSafe(TShockAPI.TSServerPlayer.Server.UserID);
-                Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
+                TSPlayer.All.SendInfoMessage(string.Format("{0} answered the trivia correctly! the answer was: {1}", args.Player.Name, T.Answer.Replace(',', '/')));
+                if (config.DisplayWrongAnswers && WrongAnswers.Count > 0)
+                {
+                    TSPlayer.All.SendErrorMessage(string.Format("Wrong answers were: {0}", string.Join(", ", WrongAnswers)));
+                }
+                if (config.GiveSEconomyCurrency)
+                {
+                    Wolfje.Plugins.SEconomy.Economy.EconomyPlayer Server = SEconomyPlugin.GetEconomyPlayerSafe(TShockAPI.TSServerPlayer.Server.UserID);
+                    Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
+                }
             }
             T.Answer = ""; T.Question = "";
             WrongAnswers.Clear();
