@@ -18,8 +18,8 @@ namespace TRIVIA
     {
         List<string> WrongAnswers = new List<string>();
         Timer Timer = new Timer(1000);
-        public trivia T;
-        public int seconds;
+        public trivia T = new trivia("","");
+        public int seconds = 0;
         private static Config config;
         Random rnd = new Random();
         public override Version Version
@@ -292,10 +292,6 @@ namespace TRIVIA
                 seconds = 0;
                 T.Answer = ""; T.Question = "";
                 args.Player.SendMessage("Trivia config reloaded sucessfully.", Color.Green);
-            }
-            else
-            {
-                args.Player.SendErrorMessage("Trivia config reloaded unsucessfully. Check logs for details.");
             }
         }
     }
