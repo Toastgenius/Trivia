@@ -132,6 +132,7 @@ namespace TRIVIA
                     Server.BankAccount.TransferToAsync(args.Player.Index, config.CurrencyAmount, Wolfje.Plugins.SEconomy.Journal.BankAccountTransferOptions.AnnounceToReceiver, "answering the trivia question correctly", "Answered trivia question");
                 }
             }
+            seconds = 0;
             T.Answer = ""; T.Question = "";
             WrongAnswers.Clear();
         }
