@@ -48,7 +48,7 @@ namespace TRIVIA
         public override void Initialize()
         {
             Commands.ChatCommands.Add(new Command(Answer, "answer", "a"));
-            Commands.ChatCommands.Add(new Command(Reload_Config, "triviareload"));
+            Commands.ChatCommands.Add(new Command("trivia.reload",Reload_Config, "triviareload"));
             Timer.Elapsed += OnTimer;
             Timer.Start();
             ReadConfig();
