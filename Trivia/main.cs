@@ -380,8 +380,25 @@ namespace TRIVIA
             new trivia("In Greek mythology a Hamadryads spirit guarded what?","Trees"),
             new trivia("Who wrote The Rights of Man and The Age of Reason?","Thomas Paine"),
             new trivia("What is mainly extracted from pitchblende?","Uranium"),
-            
-            
+            new trivia("What game was created by French mathematician Blaise Pascal, which he discovered when doing experiments into perpetual motion?","Roulette"),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
+            new trivia(""),
                 
             
             
