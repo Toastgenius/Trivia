@@ -414,7 +414,26 @@ namespace TRIVIA
             new trivia("Name the BBC series about a shipping line set in Liverpool during the late 1800s","The Onedin Line"),
             new trivia("What colour is Absynth?","Green"),
             new trivia("What flavour is Cointreau?","Orange"),
-            new trivia("")    
+            new trivia("Who was the son of Oddyseus in \"The Oddysey\"?","Telemachus"),
+            new trivia("Who is the ferryman of the river styx?","Charon"),
+            new trivia("In greek mythology, who was the king with the golden touch?","Mida"),
+            new trivia("In greek mythology, who is the titan that holds up the sky?","Atlas"),
+            new trivia("In roman mythology, who are the founders of rome?","Romulus and Remus"),
+            new trivia("In norse mythology, who is Odin's Wife?","Frigg"),
+            new trivia("Who is the polynesian volcano god?","Pelee"),
+            new trivia("In Egyptian mythology, who is the queen of the gods?","Isis"),
+            new trivia("In what year was the dancing plague that caused several people to dance themselves to death?","1512"),
+            new trivia("This man wrote Amadeus and Equus, who was he?","Peter Shaffer"),
+            new trivia("What was the hometown of \"The Beatles\"?","Liverpool"),
+            new trivia("What is Dr Seuss's real name?","Theodore Geisel"),
+            new trivia("What is Arthur Miller most famous for?","Death of a Salesman"),
+            new trivia("In Ocarina of time, where do you get Farores Wind?","Zora's Fountain"),
+            new trivia("In the end credits for The Phantom Menace, ____ is credited for playing himself.","Jabba The Hut"),
+            new trivia("In the 2002 spiderman movie who is the real life wrestler that plays Bone-saw?","Macho Man Randy Savage"),
+            new trivia("According to the Guinness Book of Records, the Lord of the Rings holds the record for the greatest number of false _____ used in one movie: 60,000.","Feet"),
+            new trivia("In the wizard of oz, this actor played Professor marvel, The horse of a different colour driver, the doorman, the crystal ball reader, and the wizard himself.","Frank Morgan"),
+            new trivia("What movie was based on Plato's \"The Allegory of the cave\".","The matrix"),
+            new trivia("During which roman festival did masters temporarily serve their slaves?","Saturnalia")
             
             
         };
